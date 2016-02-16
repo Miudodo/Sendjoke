@@ -47,8 +47,8 @@ def sendsms():
     }
 
     data = {
-        "ur":"13928960513",
-        "pw":"q387647979",
+        "ur":"***********",  #139邮箱账号
+        "pw":"********",  #139邮箱密码
         "_fv":2,
         "submitInput":u"登录"
     }
@@ -72,7 +72,7 @@ def sendsms():
     url_sms = 'http://wapmail.10086.cn/ws12/n2/send.htm?cmd=40&sid=%s' % sid
     url_send = 'http://wapmail.10086.cn/ws12/n2/send.htm'
 
-    phone = '13928960513'
+    phone = '********' #接收短信的号码
 
     headers["Referer"] = url_sms
     headers["Cookie"] = Cookie
