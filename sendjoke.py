@@ -1,28 +1,25 @@
 #-*- coding:utf-8 -*-
 __author__ = 'miudodo'
 
-
-# -*- coding: utf-8 -*-
-import sys, urllib, urllib2, json
 import requests,re
 
 def get_content():
     url = 'http://apis.baidu.com/showapi_open_bus/showapi_joke/joke_text?page=1'
-    req = urllib2.Request(url)
 
-    req.add_header("apikey", "4cdf54fb864a0fd7654a5c42aedd41ba")
+    headers = {
+        "apikey":"4cdf54fb864a0fd7654a5c42aedd41ba"
+    }
 
-    resp = urllib2.urlopen(req)
-    content = resp.read()
+    content = requests.get(url, headers = headers)
     if(content):
-        json_result = json.loads(content) #转换为字典对象
-        #  下面从这个字典中获得笑话的标题和正文
-        content_list = json_result['showapi_res_body']['contentlist']
-        # 只取第一条笑话的标题和正文
-        #first_title = content_list[0]['title'].encode('utf8')
-        first_text = content_list[0]['text'].encode('utf8')
-        #print '标题：'+first_title
-        return '笑话：'+ first_text
+        result = ''.join(content.text) #转换文本
+        # 使用正则获取笑话正文
+        p_joke = re.compile(r'"text":"(.*?)"')
+        text = p_joke.findall(result)
+        # 只取第一条笑话正文
+        #for t in text:
+        #    print t
+        return u'笑话：'+ text[0]
     else:
         return "系统错误，无笑话"
 
