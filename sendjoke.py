@@ -7,7 +7,7 @@ def get_content():
     url = 'http://apis.baidu.com/showapi_open_bus/showapi_joke/joke_text?page=1'
 
     headers = {
-        "apikey":"4cdf54fb864a0fd7654a5c42aedd41ba"
+        "apikey":"************"
     }
 
     content = requests.get(url, headers = headers)
@@ -52,8 +52,8 @@ def sendsms():
     headers["Cookie"] = Cookie
 
     data = {
-        "ur":"13928960513",
-        "pw":"q387647979",
+        "ur":"*********",
+        "pw":"***********",
         "_fv":2,
         "submitInput":u"登录"
     }
@@ -78,7 +78,7 @@ def sendsms():
     url_sms = 'http://wapmail.10086.cn/ws12/n2/send.htm?sid=%s' % sid
     url_send = 'http://wapmail.10086.cn/ws12/n2/send.htm'
 
-    phone = '13928960513,13580518268,15202002820'
+    phone = '***********'
 
     headers["Referer"] = url_sms
     headers["Cookie"] = Cookie
